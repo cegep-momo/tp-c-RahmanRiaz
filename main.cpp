@@ -32,6 +32,8 @@ void displayMenu() {
     cout << "11. Statistiques de la Bibliothèque\n";
     cout << "12. Sauvegarder les Données\n";
     cout << "13. Créer une Sauvegarde\n";
+    cout << "14. Trier les livres par l'auteur\n";
+    cout << "15. Trier les livres par le titre\n";
     cout << "0.  Quitter\n";
     cout << "======================================================\n";
     cout << "Entrez votre choix : ";
@@ -87,6 +89,9 @@ int main() {
             case 2: { // Remove Book
                 string isbn = getInput("Entrez l'ISBN du livre à supprimer : ");
                 
+                string choix = getInput("Êtes-vous sûr de vouloir supprimer ce livre ? (o/n) : ");
+                if (choix == "o" || choix == "O") {
+                    
                 if (library.removeBook(isbn)) {
                     cout << "Livre supprimé avec succès !\n";
                 } else {
@@ -94,6 +99,10 @@ int main() {
                 }
                 pauseForInput();
                 break;
+
+                } else {
+                    cout << "Suppression annulée.\n";
+                }
             }
             
             case 3: { // Search by Title
@@ -209,6 +218,19 @@ int main() {
             
             case 13: { // Create Backup
                 fileManager.createBackup();
+                pauseForInput();
+                break;
+            }
+            
+            case 14: { // Sort Books by Author
+                library.TrierLivreAuteur();
+                library.displayAllBooks();
+                pauseForInput();
+                break;
+            }
+            case 15: { // Sort Books by Title
+                library.TrierLivreTitre();
+                library.displayAllBooks();
                 pauseForInput();
                 break;
             }

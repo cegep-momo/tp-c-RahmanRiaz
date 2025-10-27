@@ -46,6 +46,9 @@ public:
     int getTotalBooks() const;
     int getAvailableBookCount() const;
     int getCheckedOutBookCount() const;
+
+    void TrierLivreTitre();
+    void TrierLivreAuteur();
 };
 
 #endif
